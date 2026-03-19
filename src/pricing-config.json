@@ -1,0 +1,76 @@
+{
+    "discount": {
+        "percentage": 30,
+        "endDate": "2026-04-01T00:00:00",
+        "enabled": true
+    },
+    "plans": [
+        {
+            "name": "Básico",
+            "originalPrice": 500,
+            "desc": "Despliegue rápido para MVPs.",
+            "features": [
+                "Landing Page (1 página)",
+                "Bloques de contenido dinámico",
+                "Diseño Responsive 2.0",
+                "2 Revisiones de precisión",
+                "Optimización de carga Turbo",
+                "Certificado SSL Enterprise"
+            ]
+        },
+        {
+            "name": "Standard",
+            "originalPrice": 800,
+            "popular": true,
+            "desc": "El estándar de la industria digital.",
+            "features": [
+                "5 - 6 Páginas principales",
+                "Diseño Responsive Adaptativo",
+                "2 Revisiones incluidas",
+                "Entrega en 15 días (aprox)",
+                "Optimización SEO Técnica",
+                "Integración WhatsApp API",
+                "Módulo de Redes Sociales",
+                "Código Fuente Completo"
+            ]
+        },
+        {
+            "name": "Premium",
+            "originalPrice": 1200,
+            "desc": "Sistemas corporativos de alto nivel.",
+            "features": [
+                "Arquitectura Multi-página",
+                "Diseño 100% Disruptivo",
+                "3 Revisiones de profundidad",
+                "Entrega según Roadmap",
+                "SEO Avanzado & Analytics",
+                "Código Fuente & Documentación",
+                "Integración CRM / Automatización",
+                "Soporte Nivel 1"
+            ]
+        }
+    ],
+    "additionalServices": [
+        {
+            "id": "hosting",
+            "title": "Cloud Hosting",
+            "originalPrice": 150,
+            "billingCycle": "anual",
+            "detail": "Infraestructura de alta disponibilidad."
+        },
+        {
+            "id": "domain",
+            "title": "Dominio Global",
+            "originalPrice": 100,
+            "billingCycle": "anual",
+            "detail": "Gestión de DNS y registro .com."
+        },
+        {
+            "id": "support",
+            "title": "Soporte Técnico",
+            "originalPrice": 50,
+            "billingCycle": "mes",
+            "detail": "Mantenimiento preventivo y actualizaciones."
+        }
+    ]
+}

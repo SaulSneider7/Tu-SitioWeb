@@ -1,0 +1,38 @@
+[
+    {
+        "title": "E-commerce Nexus",
+        "category": "Plataforma de Ventas",
+        "image": "https://picsum.photos/seed/nexus/800/600",
+        "link": "#"
+    },
+    {
+        "title": "Crypto Dashboard",
+        "category": "Fintech App",
+        "image": "https://picsum.photos/seed/crypto/800/600",
+        "link": "#"
+    },
+    {
+        "title": "AI Analytics",
+        "category": "SaaS Platform",
+        "image": "https://picsum.photos/seed/ai/800/600",
+        "link": "#"
+    },
+    {
+        "title": "Cyber Security Portal",
+        "category": "Enterprise Security",
+        "image": "https://picsum.photos/seed/security/800/600",
+        "link": "#"
+    },
+    {
+        "title": "Smart Logistics",
+        "category": "Supply Chain",
+        "image": "https://picsum.photos/seed/logistics/800/600",
+        "link": "#"
+    },
+    {
+        "title": "HealthTech Connect",
+        "category": "Medical Portal",
+        "image": "https://picsum.photos/seed/health/800/600",
+        "link": "#"
+    }
+]
