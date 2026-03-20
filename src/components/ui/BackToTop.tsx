@@ -34,7 +34,7 @@ export const BackToTop = () => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: 20 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-purple-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20 hover:bg-purple-700 transition-all glow-purple"
+                    className="fixed bottom-32 right-8 z-50 w-14 h-14 bg-purple-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20 hover:bg-purple-700 transition-all glow-purple"
                     aria-label="Volver arriba"
                 >
                     <FontAwesomeIcon icon={faArrowUp} className="text-xl" />
