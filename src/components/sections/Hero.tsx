@@ -1,15 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight, faTerminal } from "@fortawesome/free-solid-svg-icons";
 import pricingConfig from "../../pricing-config.json";
 
 export const Hero = () => {
+    const [showInfo, setShowInfo] = useState(false);
     const { plans, discount } = pricingConfig;
     const lowestPrice = Math.min(...plans.map(p => p.originalPrice));
     const finalPrice = discount.enabled ? Math.floor(lowestPrice * (1 - discount.percentage / 100)) : lowestPrice;
 
     return (
-        <section className="relative min-h-screen lg:h-screen flex items-center pt-32 md:pt-24 pb-16 px-4 overflow-hidden tech-grid">
+        <section className="relative min-h-screen lg:h-screen flex items-center pt-32 md:pt-24 pb-16 px-4 overflow-hidden tech-grid mt-30 md:mt-0">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10"></div>
 
             <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
@@ -42,41 +44,25 @@ export const Hero = () => {
                     </div>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.92 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative hidden lg:flex items-center justify-center min-h-[620px]"
-                    data-aos="fade-left"
-                    data-aos-duration="1200"
-                    data-aos-delay="250"
-                    data-aos-easing="ease-out-cubic"
-                >
-                    {/* Glow general */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 to-blue-500/30 rounded-[3rem] blur-3xl opacity-70"></div>
+                <div className="relative flex flex-col items-center justify-center z-20">
 
-                    {/* Anillo decorativo detrás */}
-                    <div className="absolute w-[520px] h-[520px] rounded-full border border-white/10"></div>
-                    <div className="absolute w-[420px] h-[420px] rounded-full border border-purple-400/10"></div>
+                    {/* ANILLOS DECORATIVOS */}
+                    <div className="absolute w-[320px] h-[320px] md:w-[520px] md:h-[520px] rounded-full border border-white/10"></div>
+                    <div className="absolute w-[220px] h-[220px] md:w-[420px] md:h-[420px] rounded-full border border-purple-400/10"></div>
 
-                    {/* Partículas suaves */}
+                    {/* PARTÍCULAS SUAVES */}
                     <motion.div
-                        className="absolute top-16 left-10 w-3 h-3 rounded-full bg-purple-400/70 blur-[2px]"
-                        animate={{ y: [0, -12, 0], opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute top-16 left-10 w-2 h-2 rounded-full bg-purple-400/70 blur-[2px]"
+                        animate={{ y: [0, -10, 0], opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 4, repeat: Infinity }}
                     />
                     <motion.div
-                        className="absolute top-28 right-16 w-2 h-2 rounded-full bg-blue-400/80 blur-[1px]"
-                        animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
-                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    <motion.div
-                        className="absolute bottom-24 left-20 w-4 h-4 rounded-full bg-fuchsia-400/60 blur-[3px]"
-                        animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute top-24 right-12 w-2 h-2 rounded-full bg-blue-400/70"
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 5, repeat: Infinity }}
                     />
 
-                    {/* Blob decorativo */}
+                    {/* BLOBS */}
                     <motion.div
                         className="absolute top-10 left-14 w-24 h-24 bg-purple-500/20 rounded-full blur-2xl"
                         animate={{ y: [0, -10, 0], x: [0, 8, 0] }}
@@ -88,64 +74,103 @@ export const Hero = () => {
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                     />
 
-                    {/* Card superior izquierda */}
+                    {/* CARD SUPERIOR (CLICK HINT) */}
                     <motion.div
-                        className="absolute top-20 left-0 z-20 glass rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-4 py-3 shadow-2xl"
+                        className="absolute top-20 left-0 z-20 glass rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-4 py-3 shadow-2xl max-w-[180px]"
                         animate={{ y: [0, -8, 0] }}
-                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 5, repeat: Infinity }}
                     >
                         <p className="text-[10px] uppercase tracking-[0.2em] text-purple-300 mb-1">
-                            Deploy listo
+                            Interacción
                         </p>
-                        <p className="text-sm font-bold text-white">Landing moderna</p>
-                        <p className="text-xs text-gray-400">Responsive + rápida</p>
+                        <p className="text-sm font-bold text-white">Haz click en el castor 👇</p>
+                        <p className="text-xs text-gray-400">Descubre lo que construyo</p>
                     </motion.div>
 
-                    {/* Card inferior derecha */}
+                    {/* CARD INFERIOR */}
                     <motion.div
                         className="absolute bottom-20 right-0 z-20 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-xl px-4 py-3 shadow-2xl max-w-[220px]"
                         animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 6, repeat: Infinity }}
                     >
                         <p className="text-[10px] uppercase tracking-[0.2em] text-blue-300 mb-2">
                             Código limpio
                         </p>
                         <pre className="text-[11px] leading-relaxed text-gray-200 whitespace-pre-wrap">
                             {`<Hero />
-    <Button />
-    <section className="premium" />`}
+<Button />
+<section className="premium" />`}
                         </pre>
                     </motion.div>
 
-                    {/* Badge lateral */}
+                    {/* BADGE */}
                     <motion.div
                         className="absolute top-[46%] -right-4 z-20 rounded-full border border-purple-400/20 bg-purple-500/10 backdrop-blur-lg px-4 py-2 shadow-lg"
                         animate={{ x: [0, 8, 0] }}
-                        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ duration: 4.5, repeat: Infinity }}
                     >
                         <span className="text-xs font-semibold text-purple-200">
                             SEO · UX · E-commerce
                         </span>
                     </motion.div>
 
-                    {/* Imagen principal */}
+                    {/* INDICADOR CLICK (extra refuerzo UX) */}
                     <motion.div
-                        className="relative z-10 w-full max-w-[620px] mx-auto"
-                        animate={{ y: [0, -12, 0], rotate: [0, 1, 0, -1, 0] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        whileHover={{ scale: 1.03 }}
+                        className="absolute -top-8 md:-top-12 flex items-center gap-2 bg-purple-600/20 border border-purple-400/30 text-purple-300 px-3 py-1 rounded-full text-[10px] md:text-xs backdrop-blur-md"
+                        animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
+                        transition={{ duration: 2.5, repeat: Infinity }}
+                    >
+                        Interactúa con ByteCastor
+                    </motion.div>
+
+                    {/* CASTOR */}
+                    <motion.div
+                        className="relative z-10 w-full max-w-[280px] sm:max-w-[380px] md:max-w-[520px] lg:max-w-[620px] mx-auto cursor-pointer"
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 5, repeat: Infinity }}
+                        onClick={() => setShowInfo(!showInfo)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-blue-500/20 rounded-[2rem] blur-2xl scale-95"></div>
 
                         <img
                             src="/castor_hero.png"
-                            alt="Castor Tecnológico"
-                            className="relative w-full h-auto object-contain aspect-square drop-shadow-[0_0_40px_rgba(168,85,247,0.35)] select-none"
-                            referrerPolicy="no-referrer"
-                            draggable={false}
+                            alt="ByteCastor"
+                            className="relative w-full h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.35)]"
                         />
+
+                        {/* MARCA */}
+                        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-center">
+                            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+                                ByteCastor
+                            </h2>
+                            <p className="text-xs uppercase tracking-widest text-purple-300">
+                                Arquitecto Digital
+                            </p>
+                        </div>
                     </motion.div>
-                </motion.div>
+
+                    {/* PANEL INTERACTIVO */}
+                    {showInfo && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[9999] w-[90%] md:w-[380px] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl"
+                        >
+                            <p className="text-xs uppercase tracking-widest text-blue-300 mb-4 text-center">
+                                ¿Qué construyo?
+                            </p>
+
+                            <ul className="text-sm text-gray-300 space-y-3">
+                                <li>🚀 Webs rápidas y optimizadas</li>
+                                <li>🎯 Diseño que convierte</li>
+                                <li>📈 SEO listo para Google</li>
+                                <li>⚙️ Sistemas escalables</li>
+                            </ul>
+                        </motion.div>
+                    )}
+                </div>
             </div>
         </section>
     );

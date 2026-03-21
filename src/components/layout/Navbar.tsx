@@ -15,9 +15,34 @@ export const Navbar = () => {
         setIsOpen(false);
     }, [location]);
 
+    const handleMobileClick = (href: string) => {
+        setIsOpen(false);
+        // Small delay to allow the menu to start closing and avoid layout shifts during scroll
+        setTimeout(() => {
+            const id = href.replace("#", "");
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 300);
+    };
+
     const NavLink = ({ href, children, className = "", onClick }: { href: string, children: ReactNode, className?: string, onClick?: () => void }) => {
         if (href.startsWith("#") && isHomePage) {
-            return <a href={href} className={className} onClick={onClick}>{children}</a>;
+            return (
+                <a
+                    href={href}
+                    className={className}
+                    onClick={(e) => {
+                        if (onClick) {
+                            e.preventDefault();
+                            onClick();
+                        }
+                    }}
+                >
+                    {children}
+                </a>
+            );
         }
         if (href.startsWith("#") && !isHomePage) {
             return <Link to={`/${href}`} className={className} onClick={onClick}>{children}</Link>;
@@ -73,16 +98,19 @@ export const Navbar = () => {
                         className="md:hidden bg-dark-purple/95 backdrop-blur-2xl border-b border-purple-500/20 overflow-hidden"
                     >
                         <div className="px-4 pt-4 pb-8 space-y-4 flex flex-col items-center text-center">
-                            <NavLink href="#servicios" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => setIsOpen(false)}>Servicios</NavLink>
+                            <NavLink href="#servicios" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => handleMobileClick("#servicios")}>Servicios</NavLink>
                             <Link to="/portafolio" className={`text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full ${location.pathname === '/portafolio' ? 'text-purple-500' : ''}`} onClick={() => setIsOpen(false)}>Portafolio</Link>
-                            <NavLink href="#proceso" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => setIsOpen(false)}>Proceso</NavLink>
-                            <NavLink href="#planes" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => setIsOpen(false)}>Planes</NavLink>
+                            <NavLink href="#proceso" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => handleMobileClick("#proceso")}>Proceso</NavLink>
+                            <NavLink href="#planes" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => handleMobileClick("#planes")}>Planes</NavLink>
 
                             <div className="pt-4 w-full">
                                 <a
                                     href="#contacto"
                                     className="block bg-purple-600 text-white px-6 py-4 rounded-xl hover:bg-purple-700 transition-all glow-purple font-bold text-center"
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleMobileClick("#contacto");
+                                    }}
                                 >
                                     Asesoría Gratis
                                 </a>
