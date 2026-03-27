@@ -8,9 +8,17 @@ export const MiniPet = () => {
     const [position, setPosition] = useState({ x: 100, y: 100 });
     const [isDragging, setIsDragging] = useState(false);
     const [isHit, setIsHit] = useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
 
-    // Random movement logic
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const lastPlayRef = useRef(0);
+
+    // Inicializar audio
+    useEffect(() => {
+        audioRef.current = new Audio("/ouch.mp3");
+        audioRef.current.volume = 0.7;
+    }, []);
+
+    // Movimiento automático
     useEffect(() => {
         if (!isVisible || isDragging || isHit) return;
 
@@ -28,10 +36,28 @@ export const MiniPet = () => {
         return () => clearInterval(interval);
     }, [isVisible, isDragging, isHit]);
 
+    // Click (golpe + sonido)
     const handleHit = () => {
         if (isDragging) return;
+
+        const now = Date.now();
+        if (now - lastPlayRef.current < 400) return; // evita spam
+
+        lastPlayRef.current = now;
+
         setIsHit(true);
-        // Reset hit state after 800ms (duration of the hit animation/gif)
+
+        // AUDIO
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(() => {});
+        }
+
+        // Vibración en móvil (opcional PRO)
+        if (navigator.vibrate) {
+            navigator.vibrate(100);
+        }
+
         setTimeout(() => setIsHit(false), 800);
     };
 
@@ -39,9 +65,13 @@ export const MiniPet = () => {
 
     return (
         <motion.div
-            ref={containerRef}
             drag
-            dragConstraints={{ left: 0, right: window.innerWidth - 80, top: 0, bottom: window.innerHeight - 80 }}
+            dragConstraints={{
+                left: 0,
+                right: window.innerWidth - 80,
+                top: 0,
+                bottom: window.innerHeight - 80
+            }}
             dragMomentum={false}
             onDragStart={() => setIsDragging(true)}
             onDragEnd={(_, info) => {
@@ -54,19 +84,33 @@ export const MiniPet = () => {
             onClick={handleHit}
             animate={
                 isHit
-                    ? { x: [position.x, position.x - 10, position.x + 10, position.x - 10, position.x + 10, position.x] }
-                    : isDragging ? undefined : { x: position.x, y: position.y }
+                    ? {
+                        x: [
+                            position.x,
+                            position.x - 10,
+                            position.x + 10,
+                            position.x - 10,
+                            position.x + 10,
+                            position.x
+                        ]
+                    }
+                    : isDragging
+                        ? undefined
+                        : { x: position.x, y: position.y }
             }
             transition={
                 isHit
-                    ? { duration: 0.4, times: [0, 0.2, 0.4, 0.6, 0.8, 1] }
-                    : isDragging ? { duration: 0 } : { duration: 4, ease: "linear" }
+                    ? { duration: 0.4 }
+                    : isDragging
+                        ? { duration: 0 }
+                        : { duration: 4, ease: "linear" }
             }
             className="fixed top-0 left-0 z-[200] group cursor-grab active:cursor-grabbing"
             style={{ touchAction: "none" }}
         >
             <div className="relative p-4">
-                {/* Close Button - Visible on hover */}
+
+                {/* BOTÓN CERRAR */}
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
@@ -77,24 +121,30 @@ export const MiniPet = () => {
                     <FontAwesomeIcon icon={faTimes} className="text-[10px]" />
                 </button>
 
-                {/* Pet Body */}
+                {/* MASCOTA */}
                 <div className="relative">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-300 ${isHit ? 'bg-red-500/20 border-red-500 scale-110' : ' glow-purple border border-purple-400/30'}`}>
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-300 
+                        ${isHit
+                            ? 'bg-red-500/20 border-red-500 scale-110'
+                            : 'glow-purple border border-purple-400/30'
+                        }`}
+                    >
                         <img
-                            src={isHit
-                                ? "/pet_sad.png"
-                                : "/pet_happy.png"}
+                            src={isHit ? "/pet_sad.png" : "/pet_happy.png"}
                             alt="Mascota"
                             className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
                         />
                     </div>
 
-                    {/* Shadow */}
-                    <div className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-2 bg-black/40 blur-sm rounded-full transition-all ${isHit ? 'w-14 opacity-60' : 'w-10 opacity-100'}`}></div>
+                    {/* SOMBRA */}
+                    <div className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-2 bg-black/40 blur-sm rounded-full transition-all 
+                        ${isHit ? 'w-14 opacity-60' : 'w-10 opacity-100'}`}
+                    ></div>
 
-                    {/* Speech Bubble */}
-                    <div className={`absolute -top-14 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl border border-purple-100 ${isHit ? 'hidden' : ''}`}>
+                    {/* BURBUJA */}
+                    <div className={`absolute -top-14 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl border border-purple-100 
+                        ${isHit ? 'hidden' : ''}`}
+                    >
                         ¡Soy Castor-Bot! 🦫
                         <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
                     </div>
