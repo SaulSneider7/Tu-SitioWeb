@@ -76,27 +76,26 @@ export const Hero = () => {
 
                     {/* CARD SUPERIOR (CLICK HINT) */}
                     <motion.div
-                        className="absolute top-20 left-0 z-20 glass rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-4 py-3 shadow-2xl max-w-[180px]"
-                        animate={{ y: [0, -8, 0] }}
+                        className="absolute top-20 left-0 z-20 glass rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-2 py-2 sm:px-4 sm:py-3 shadow-2xl max-w-[140px] sm:max-w-[180px]" animate={{ y: [0, -8, 0] }}
                         transition={{ duration: 5, repeat: Infinity }}
                     >
-                        <p className="text-[10px] uppercase tracking-[0.2em] text-purple-300 mb-1">
+                        <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-purple-300 mb-1">
                             Interacción
                         </p>
-                        <p className="text-sm font-bold text-white">Haz click en el castor 👇</p>
-                        <p className="text-xs text-gray-400">Descubre lo que construyo</p>
+                        <p className="text-xs sm:text-sm font-bold text-white">Haz click en el castor 👇</p>
+                        <p className="text-[10px] sm:text-xs text-gray-400">Descubre lo que construyo</p>
                     </motion.div>
 
                     {/* CARD INFERIOR */}
                     <motion.div
-                        className="absolute bottom-20 right-0 z-20 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-xl px-4 py-3 shadow-2xl max-w-[220px]"
+                        className="absolute bottom-20 right-0 z-20 rounded-2xl border border-white/10 bg-slate-900/70 backdrop-blur-xl px-2 py-2 sm:px-4 sm:py-3 shadow-2xl max-w-[160px] sm:max-w-[220px]"
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 6, repeat: Infinity }}
                     >
                         <p className="text-[10px] uppercase tracking-[0.2em] text-blue-300 mb-2">
                             Código limpio
                         </p>
-                        <pre className="text-[11px] leading-relaxed text-gray-200 whitespace-pre-wrap">
+                        <pre className="text-[9px] sm:text-[11px] leading-relaxed text-gray-200 whitespace-pre-wrap">
                             {`<Hero />
 <Button />
 <section className="premium" />`}
@@ -105,11 +104,11 @@ export const Hero = () => {
 
                     {/* BADGE */}
                     <motion.div
-                        className="absolute top-[46%] -right-4 z-20 rounded-full border border-purple-400/20 bg-purple-500/10 backdrop-blur-lg px-4 py-2 shadow-lg"
+                        className="absolute top-[46%] -right-2 sm:-right-4 z-20 rounded-full border border-purple-400/20 bg-purple-500/10 backdrop-blur-lg px-2 py-1 sm:px-4 sm:py-2 shadow-lg"
                         animate={{ x: [0, 8, 0] }}
                         transition={{ duration: 4.5, repeat: Infinity }}
                     >
-                        <span className="text-xs font-semibold text-purple-200">
+                        <span className="text-[10px] sm:text-xs font-semibold text-purple-200">
                             SEO · UX · E-commerce
                         </span>
                     </motion.div>
@@ -125,7 +124,7 @@ export const Hero = () => {
 
                     {/* CASTOR */}
                     <motion.div
-                        className="relative z-10 w-full max-w-[280px] sm:max-w-[380px] md:max-w-[520px] lg:max-w-[620px] mx-auto cursor-pointer"
+                        className="relative z-50 sm:z-10 w-full max-w-[280px] sm:max-w-[380px] md:max-w-[520px] lg:max-w-[620px] mx-auto cursor-pointer"
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 5, repeat: Infinity }}
                         onClick={() => setShowInfo(!showInfo)}
