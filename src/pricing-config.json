@@ -71,6 +71,13 @@
             "originalPrice": 50,
             "billingCycle": "mes",
             "detail": "Mantenimiento preventivo y actualizaciones."
+        },
+        {
+            "id": "updates",
+            "title": "Cambios Adicionales",
+            "detail": "Actualizaciones de contenido, imágenes o ajustes menores en tu sitio actual.",
+            "originalPrice": "20*",
+            "billingCycle": "por cambio"
         }
     ]
 }

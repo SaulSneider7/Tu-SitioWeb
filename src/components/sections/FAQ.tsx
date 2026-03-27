@@ -15,7 +15,7 @@ export const FAQ = () => {
         },
         {
             q: "¿La página web me ayudará a conseguir clientes?",
-            a: "Sí, pero siendo claros: una web por sí sola no hace magia. La diseñamos optimizada para convertir visitas en contactos (WhatsApp, formularios), pero el resultado también depende de tu tráfico y estrategia."
+            a: "Sí, pero siendo claros: una web por sí sola no hace magia. La diseñamos optimizada para convertir visitas en contactos (WhatsApp, redes sociales), pero el resultado también depende de tu tráfico y estrategia."
         },
         {
             q: "¿Puedo pagar en partes?",
@@ -58,8 +58,6 @@ export const FAQ = () => {
                         <div
                             key={i}
                             className={`rounded-3xl border transition-all duration-300 ${openIndex === i ? 'bg-purple-600/10 border-purple-500/50' : 'glass border-white/5 hover:border-white/20'}`}
-                            data-aos="fade-up"
-                            data-aos-delay={i * 50}
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
