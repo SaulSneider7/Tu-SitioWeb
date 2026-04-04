@@ -7,6 +7,8 @@ import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { CountdownBanner } from "./components/layout/CountdownBanner";
 import { ScrollProgress } from "./components/ui/ScrollProgress";
+import { ScrollToTop } from "./components/ui/ScrollToTop";
+
 
 // Componentes secundarios (Carga diferida para no afectar el LCP)
 const FloatingWhatsApp = lazy(() => import("./components/layout/FloatingWhatsApp").then(module => ({ default: module.FloatingWhatsApp })));
@@ -18,6 +20,8 @@ import { HomePage } from "./pages/HomePage";
 import { PortfolioPage } from "./pages/PortfolioPage";
 import { BlogPage } from "./pages/BlogPage";
 import { BlogPostPage } from "./pages/BlogPostPage";
+import { TermsOfServicePage } from "./pages/TermsOfServicePage";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 
 export default function App() {
   useEffect(() => {
@@ -36,6 +40,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop /> {/* Asegura que cada cambio de ruta inicie en la parte superior */}
       {/* Contenedor principal con lenguaje definido (si usas un wrapper de i18n o similar) */}
       <div className="min-h-screen font-sans selection:bg-purple-500/30 selection:text-purple-200 relative antialiased">
         
@@ -57,6 +62,8 @@ export default function App() {
             <Route path="/portafolio" element={<PortfolioPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:id" element={<BlogPostPage />} />
+            <Route path="/terminos" element={<TermsOfServicePage />} />
+            <Route path="/privacidad" element={<PrivacyPolicyPage />} />
             {/* SEO: Podrías añadir una página 404 aquí para evitar errores de rastreo */}
           </Routes>
         </main>

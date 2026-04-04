@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faPhone, faEnvelope, faMapMarkerAlt, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faPhone, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
-    
+
     const socialLinks = [
         { icon: faFacebook, url: "https://www.facebook.com/profile.php?id=61586504782161", label: "Facebook" },
         { icon: faInstagram, url: "https://www.instagram.com/tu_sitioweb.oficial", label: "Instagram" },
@@ -24,7 +25,7 @@ export const Footer = () => {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
 
             <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-24 relative z-10">
-                
+
                 {/* Branding & Bio */}
                 <div className="lg:col-span-2">
                     <div className="flex items-center gap-3 mb-8 group cursor-default">
@@ -36,15 +37,15 @@ export const Footer = () => {
                     <p className="text-gray-400 max-w-md mb-10 text-lg leading-relaxed">
                         Expertos en <strong>diseño web profesional y desarrollo de software</strong> en Perú. Transformamos ideas complejas en interfaces digitales de alto rendimiento.
                     </p>
-                    
+
                     {/* Social Media con mejor accesibilidad */}
                     <div className="flex gap-4">
                         {socialLinks.map((social, i) => (
-                            <a 
-                                key={i} 
-                                href={social.url} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
+                            <a
+                                key={i}
+                                href={social.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 aria-label={social.label}
                                 className="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-purple-600 hover:-translate-y-1 transition-all duration-300"
                             >
@@ -100,8 +101,8 @@ export const Footer = () => {
                         © {currentYear} TU SITIO WEB // <span className="text-purple-900">SYSTEM_VERSION: 2.1.0</span> // POWERED_BY_CASTOR
                     </div>
                     <div className="flex gap-8 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-                        <a href="#" className="hover:text-purple-500 transition-colors">Términos de Servicio</a>
-                        <a href="#" className="hover:text-purple-500 transition-colors">Privacidad de Datos</a>
+                        <li><Link to="/privacidad" className="hover:text-purple-500 transition-colors">Privacidad</Link></li>
+                        <li><Link to="/terminos" className="hover:text-purple-500 transition-colors">Términos</Link></li>
                     </div>
                 </div>
             </div>
