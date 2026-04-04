@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faServer, faGlobe, faCogs, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faServer, faGlobe, faCogs, faEdit, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import pricingConfig from "../../pricing-config.json";
 
 export const AdditionalServices = () => {
@@ -13,58 +13,84 @@ export const AdditionalServices = () => {
     };
 
     return (
-        <section id="servicios-adicionales" className="py-32 relative" aria-labelledby="additional-services-title">
-            <div className="max-w-7xl mx-auto px-4">
+        <section 
+            id="servicios-adicionales" 
+            className="py-32 relative overflow-hidden" 
+            aria-labelledby="additional-services-title"
+        >
+            {/* Decoración de fondo para profundidad visual */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(109,40,217,0.05)_0%,transparent_70%)] pointer-events-none" />
+
+            <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 relative z-10">
                 
-                {/* SEO: Título con palabras clave de soporte y mantenimiento */}
                 <div className="text-center mb-24" data-aos="fade-up">
-                    <h2 id="additional-services-title" className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-6">
+                    {/* Badge superior para SEO: Categorización de servicio */}
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-widest mb-6">
+                        <FontAwesomeIcon icon={faCheckCircle} className="text-[10px]" />
+                        Mantenimiento Profesional
+                    </span>
+
+                    <h2 id="additional-services-title" className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight">
                         Infraestructura y <span className="text-purple-500">Soporte Web</span>
                     </h2>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Garantizamos la estabilidad y el crecimiento de tu proyecto con <strong>servicios de hosting, dominio y mantenimiento técnico</strong>.
+                    
+                    <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                        Asegura la continuidad de tu negocio en digital. Ofrecemos 
+                        <span className="text-white"> soluciones de hosting de alta velocidad</span>, 
+                        gestión de dominios y <span className="text-white">soporte técnico especializado en Perú</span>.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Contenedor con Schema.org para servicios */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {additionalServices.map((s, i) => {
                         return (
                             <article
-                                key={i}
-                                className="p-8 rounded-[2rem] glass border-purple-500/10 flex flex-col items-center text-center group hover:border-purple-500/30 transition-all shadow-lg shadow-purple-500/5"
+                                key={s.id}
+                                className="relative p-8 rounded-[2.5rem] glass border-white/5 flex flex-col items-center text-center group hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-2 shadow-2xl"
                                 data-aos="fade-up"
                                 data-aos-delay={i * 100}
+                                itemScope 
+                                itemType="https://schema.org/Service"
                             >
-                                {/* Icono decorativo - aria-hidden para no distraer al bot */}
-                                <div className="w-16 h-16 bg-purple-600/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-all shadow-inner" aria-hidden="true">
+                                {/* Badge de "Popular" o "Esencial" opcional */}
+                                {(s.id === 'hosting' || s.id === 'support') && (
+                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase tracking-tighter shadow-lg shadow-purple-500/40">
+                                        Recomendado
+                                    </span>
+                                )}
+
+                                <div className="w-20 h-20 bg-gradient-to-br from-purple-600/20 to-transparent rounded-3xl flex items-center justify-center mb-8 group-hover:from-purple-600 group-hover:rotate-6 transition-all duration-500 shadow-inner" aria-hidden="true">
                                     <FontAwesomeIcon 
                                         icon={iconMap[s.id] || faGlobe} 
-                                        className="text-2xl text-purple-400 group-hover:text-white" 
+                                        className="text-3xl text-purple-400 group-hover:text-white transition-colors" 
                                     />
                                 </div>
 
-                                {/* SEO: H3 para jerarquía de servicios secundarios */}
-                                <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                                <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-purple-400 transition-colors" itemProp="name">
                                     {s.title}
                                 </h3>
                                 
-                                <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                                <p className="text-gray-400 mb-8 text-sm leading-relaxed" itemProp="description">
                                     {s.detail}
                                 </p>
                                 
-                                <div className="mt-auto flex flex-col items-center gap-1">
-                                    <div className="text-2xl font-display font-black text-purple-400" aria-label={`Precio: S/${(s as any).originalPrice} por ${(s as any).billingCycle}`}>
-                                        S/{(s as any).originalPrice} 
-                                        <span className="text-xs text-gray-500 font-mono ml-1 uppercase tracking-tighter">
-                                            / {(s as any).billingCycle}
-                                        </span>
+                                <div className="mt-auto w-full">
+                                    <div className="py-4 border-t border-white/5 flex flex-col items-center">
+                                        <span className="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold">Inversión</span>
+                                        <div className="text-3xl font-display font-black text-white" aria-label={`Precio: S/${(s as any).originalPrice}`}>
+                                            <span className="text-purple-500 text-sm mr-1">S/</span>
+                                            {(s as any).originalPrice} 
+                                            <span className="text-xs text-gray-500 font-mono ml-1 uppercase">
+                                                / {(s as any).billingCycle}
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    {/* Nota aclaratoria para el SEO y el usuario */}
                                     {s.id === "updates" && (
-                                        <span className="text-[10px] text-gray-500 italic leading-tight mt-1">
-                                            *Consultoría técnica personalizada
-                                        </span>
+                                        <p className="text-[10px] text-purple-400/60 italic mt-2 font-medium">
+                                            *Consultoría técnica prioritaria
+                                        </p>
                                     )}
                                 </div>
                             </article>

@@ -7,7 +7,7 @@ import { Reveal } from "../components/ui/Reveal";
 
 export const NotFoundPage = () => {
   return (
-    <div className="min-h-screen bg-deep-black flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="top-15 min-h-screen bg-deep-black flex items-center justify-center px-4 relative overflow-hidden">
       <Helmet>
         <title>No eres tú, soy yo | TuSitioWeb</title>
         <meta name="description" content="La página que buscas no existe o ha sido movida." />
@@ -82,7 +82,7 @@ export const NotFoundPage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="mt-20 font-mono text-[10px] text-white/10 uppercase tracking-[0.5em]"
+          className="mt-20 font-mono text-[10px] text-white/50 uppercase tracking-[0.5em]"
         >
           Status: Broken_Heart // Code: 404 // Recommendation: Find_New_Love
         </motion.div>
