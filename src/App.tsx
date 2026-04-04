@@ -22,6 +22,7 @@ import { BlogPage } from "./pages/BlogPage";
 import { BlogPostPage } from "./pages/BlogPostPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 export default function App() {
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function App() {
             <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/terminos" element={<TermsOfServicePage />} />
             <Route path="/privacidad" element={<PrivacyPolicyPage />} />
-            {/* SEO: Podrías añadir una página 404 aquí para evitar errores de rastreo */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
 
