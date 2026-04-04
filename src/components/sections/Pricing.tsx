@@ -7,7 +7,6 @@ import {
   faArrowRight, 
   faShoppingBag, 
   faDatabase, 
-  faMobileAlt, 
   faWrench 
 } from "@fortawesome/free-solid-svg-icons";
 import pricingConfig from "../../pricing-config.json";
