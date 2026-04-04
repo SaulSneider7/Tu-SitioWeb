@@ -1,38 +1,122 @@
 [
     {
-        "title": "E-commerce Nexus",
-        "category": "Plataforma de Ventas",
-        "image": "https://picsum.photos/seed/nexus/800/600",
-        "link": "#"
+        "title": "Sonrisa Real",
+        "category": "Clínica Dental",
+        "image": "/sonrisa_real.webp",
+        "link": "https://sonrisa-real.netlify.app/",
+        "description": "Diseño web para clínica odontológica, optimizado para generar confianza y atraer pacientes.",
+        "keywords": [
+            "web dentista Perú",
+            "clínica dental web",
+            "odontología marketing"
+        ]
     },
     {
-        "title": "Crypto Dashboard",
-        "category": "Fintech App",
-        "image": "https://picsum.photos/seed/crypto/800/600",
-        "link": "#"
+        "title": "Agroindustrial Tivan SAC",
+        "category": "Diseño Web Agrícola",
+        "image": "/agroindustrial_tivan.webp",
+        "link": "https://agroindustrialtivan.com/",
+        "description": "Diseño y desarrollo de plataforma web para empresa agroindustrial en Perú, enfocada en soluciones sostenibles y optimización del rendimiento agrícola.",
+        "keywords": [
+            "diseño web agrícola",
+            "web agroindustrial Perú",
+            "páginas web para empresas agrícolas"
+        ]
     },
     {
-        "title": "AI Analytics",
-        "category": "SaaS Platform",
-        "image": "https://picsum.photos/seed/ai/800/600",
-        "link": "#"
+        "title": "Alexander Flow",
+        "category": "Portafolio Creativo",
+        "image": "/alexander-flow.webp",
+        "link": "https://alexanderflow.netlify.app/",
+        "description": "Desarrollo de portafolio web profesional para DJ y diseñador gráfico, optimizado para mostrar servicios creativos y captar clientes.",
+        "keywords": [
+            "portafolio DJ",
+            "web para artistas",
+            "diseño web creativo"
+        ]
     },
     {
-        "title": "Cyber Security Portal",
-        "category": "Enterprise Security",
-        "image": "https://picsum.photos/seed/security/800/600",
-        "link": "#"
+        "title": "Flow 21",
+        "category": "Industria Musical",
+        "image": "/flow-21.webp",
+        "link": "https://flow-21.netlify.app/",
+        "description": "Plataforma web para productora musical urbana en Perú, diseñada para transmitir identidad de marca y conectar con nuevos artistas.",
+        "keywords": [
+            "web productora musical",
+            "diseño web música urbana",
+            "branding musical"
+        ]
     },
     {
-        "title": "Smart Logistics",
-        "category": "Supply Chain",
-        "image": "https://picsum.photos/seed/logistics/800/600",
-        "link": "#"
+        "title": "Monzon Express",
+        "category": "Transporte y Logística",
+        "image": "/monzon-express.webp",
+        "link": "https://monzon-express.com/",
+        "description": "Diseño web corporativo para empresa de transporte, encomiendas y turismo, optimizado para generar confianza y captar clientes.",
+        "keywords": [
+            "web transporte Perú",
+            "logística web",
+            "empresa de envíos web"
+        ]
     },
     {
-        "title": "HealthTech Connect",
-        "category": "Medical Portal",
-        "image": "https://picsum.photos/seed/health/800/600",
-        "link": "#"
+        "title": "Mr. Brevetes",
+        "category": "Servicios Legales",
+        "image": "/mr_brevetes.webp",
+        "link": "https://mr-brevetes.netlify.app/",
+        "description": "Página web para asesoría en licencias de conducir en Perú, enfocada en conversión y captación de clientes.",
+        "keywords": [
+            "licencia conducir Perú web",
+            "asesoría MTC",
+            "web servicios legales"
+        ]
+    },
+    {
+        "title": "Puertas Seguras JLC",
+        "category": "Ingeniería Industrial",
+        "image": "/puertas_seguras_jlc.webp",
+        "link": "https://puertassegurasjlc.com/",
+        "description": "Sitio web para empresa especializada en puertas automáticas residenciales e industriales.",
+        "keywords": [
+            "puertas automáticas Perú",
+            "web industrial",
+            "ingeniería web"
+        ]
+    },
+    {
+        "title": "Tip Excellent",
+        "category": "Consultoría Empresarial",
+        "image": "/tip-excellent.webp",
+        "link": "https://tip-excellent.com/",
+        "description": "Página web corporativa para empresa de consultoría con enfoque en productividad y performance.",
+        "keywords": [
+            "consultoría empresarial web",
+            "empresa servicios Perú",
+            "web corporativa"
+        ]
+    },
+    {
+        "title": "Titan Barber Shop",
+        "category": "Negocio Local",
+        "image": "/Titan_Barber.webp",
+        "link": "https://titan-barber.netlify.app/",
+        "description": "Página web moderna para barbería, enfocada en atraer clientes locales y reservas.",
+        "keywords": [
+            "barbería web Perú",
+            "negocio local web",
+            "marketing barbería"
+        ]
+    },
+    {
+        "title": "Corporacion VGR",
+        "category": "Producción Audiovisual",
+        "image": "/corporacionvgr.webp",
+        "link": "https://corporacionvgr.com/",
+        "description": "Sitio web profesional para empresa de servicios audiovisuales y grabaciones aéreas en 4K/6K.",
+        "keywords": [
+            "producción audiovisual Perú",
+            "drone 4K web",
+            "video corporativo web"
+        ]
     }
 ]

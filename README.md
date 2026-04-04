@@ -71,3 +71,20 @@ export default defineConfig([
   },
 ])
 ```
+
+
+- sala 11 ok
+- Martel - nadie envio - sala 3
+- beltram - sala 12
+- cancho - sala 6
+- mitzi - sala 9
+- gil - sala 10
+- gerardo mendoza - 7
+- torres cl - sala 4
+- villamil  - sala 1
+- vargas - sala 5
+- sanchez romina - sala 8 - nadie envio
+
+
+
+- Delgado marisol - sala 2 (solo dos integrantes)

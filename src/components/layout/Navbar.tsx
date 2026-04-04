@@ -1,124 +1,132 @@
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import type { ReactNode } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
     const isHomePage = location.pathname === "/";
 
-    // Close menu on route change
     useEffect(() => {
-        setIsOpen(false);
-    }, [location]);
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
-    const handleMobileClick = (href: string) => {
+    useEffect(() => setIsOpen(false), [location]);
+
+    const scrollToSection = (href: string) => {
         setIsOpen(false);
-        // Small delay to allow the menu to start closing and avoid layout shifts during scroll
-        setTimeout(() => {
-            const id = href.replace("#", "");
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
-        }, 300);
+        const id = href.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 100; 
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
     };
 
-    const NavLink = ({ href, children, className = "", onClick }: { href: string, children: ReactNode, className?: string, onClick?: () => void }) => {
-        if (href.startsWith("#") && isHomePage) {
+    const NavLink = ({ href, children, className = "" }: { href: string, children: ReactNode, className?: string }) => {
+        // Mantenemos el color blanco fijo 'text-white' y solo cambiamos a morado en hover
+        const baseClass = `transition-all duration-300 text-white hover:text-purple-400 uppercase tracking-widest text-xs font-bold ${className}`;
+
+        if (href.startsWith("#")) {
             return (
-                <a
-                    href={href}
-                    className={className}
-                    onClick={(e) => {
-                        if (onClick) {
-                            e.preventDefault();
-                            onClick();
-                        }
-                    }}
+                <button 
+                    onClick={() => isHomePage ? scrollToSection(href) : window.location.href = `/${href}`}
+                    className={baseClass}
                 >
                     {children}
-                </a>
+                </button>
             );
         }
-        if (href.startsWith("#") && !isHomePage) {
-            return <Link to={`/${href}`} className={className} onClick={onClick}>{children}</Link>;
-        }
-        return <Link to={href} className={className} onClick={onClick}>{children}</Link>;
+
+        return (
+            <Link to={href} className={baseClass}>
+                {children}
+            </Link>
+        );
     };
 
     return (
-        <nav className="fixed top-[96px] md:top-[48px] left-0 right-0 z-50 bg-dark-purple/60 backdrop-blur-xl border-b border-purple-500/20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-20">
-                    <Link to="/" className="flex items-center">
+        <header
+            className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
+                scrolled 
+                ? "top-15 bg-dark-purple/90 backdrop-blur-xl border-b border-purple-500/20 py-2" 
+                : "top-15 bg-dark-purple/60 backdrop-blur-md py-4"
+            }`}
+        >
+            <nav className="max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
+                    
+                    <Link to="/" className="relative z-50 flex items-center group">
                         <img
                             src="/logo_oscuro_tu-sitioweb.png"
-                            alt="Tu SitioWeb"
-                            className="h-20 w-auto object-contain"
-                            referrerPolicy="no-referrer"
-                            draggable={false}
+                            alt="Logo"
+                            className="h-12 md:h-14 w-auto transition-transform group-hover:scale-105"
                         />
                     </Link>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                        <NavLink href="#servicios" className="hover:text-purple-500 transition-colors uppercase tracking-widest">Servicios</NavLink>
-                        <Link to="/portafolio" className={`hover:text-purple-500 transition-colors uppercase tracking-widest ${location.pathname === '/portafolio' ? 'text-purple-500' : ''}`}>Portafolio</Link>
-                        <NavLink href="#proceso" className="hover:text-purple-500 transition-colors uppercase tracking-widest">Proceso</NavLink>
-                        <NavLink href="#planes" className="hover:text-purple-500 transition-colors uppercase tracking-widest">Planes</NavLink>
+                    {/* Menú Desktop: Todos los links blancos por defecto */}
+                    <ul className="hidden lg:flex items-center gap-8">
+                        <li><NavLink className="cursor-pointer" href="#servicios">Servicios</NavLink></li>
+                        <li><NavLink className="cursor-pointer" href="/portafolio">Portafolio</NavLink></li>
+                        <li><NavLink className="cursor-pointer" href="/blog">Blog</NavLink></li>
+                        <li><NavLink className="cursor-pointer" href="#planes">Planes</NavLink></li>
+                        <li><NavLink className="cursor-pointer" href="#servicios-adicionales">Servicios Adicionales</NavLink></li>
+                        <li>
+                            <button
+                                onClick={() => scrollToSection("#contacto")}
+                                className="cursor-pointer ml-4 bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] font-bold text-sm"
+                            >
+                                Asesoría Gratis
+                            </button>
+                        </li>
+                    </ul>
 
-                        <a href="#contacto" className="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition-all glow-purple font-bold">Asesoría Gratis</a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-white p-2 focus:outline-none"
-                            aria-label="Toggle menu"
-                        >
-                            <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-2xl" />
-                        </button>
-                    </div>
+                    {/* Botón Móvil */}
+                    <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden relative z-50 text-white p-2">
+                        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-2xl" />
+                    </button>
                 </div>
-            </div>
+            </nav>
 
-            {/* Mobile Menu Dropdown */}
+            {/* Menú Móvil */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="md:hidden bg-dark-purple/95 backdrop-blur-2xl border-b border-purple-500/20 overflow-hidden"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="fixed inset-0 bg-dark-purple/95 backdrop-blur-3xl lg:hidden flex flex-col items-center justify-center z-40"
                     >
-                        <div className="px-4 pt-4 pb-8 space-y-4 flex flex-col items-center text-center">
-                            <NavLink href="#servicios" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => handleMobileClick("#servicios")}>Servicios</NavLink>
-                            <Link to="/portafolio" className={`text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full ${location.pathname === '/portafolio' ? 'text-purple-500' : ''}`} onClick={() => setIsOpen(false)}>Portafolio</Link>
-                            <NavLink href="#proceso" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => handleMobileClick("#proceso")}>Proceso</NavLink>
-                            <NavLink href="#planes" className="text-gray-300 hover:text-purple-500 transition-colors uppercase tracking-widest text-lg py-2 w-full" onClick={() => handleMobileClick("#planes")}>Planes</NavLink>
-
-                            <div className="pt-4 w-full">
-                                <a
-                                    href="#contacto"
-                                    className="block bg-purple-600 text-white px-6 py-4 rounded-xl hover:bg-purple-700 transition-all glow-purple font-bold text-center"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleMobileClick("#contacto");
-                                    }}
+                        <ul className="flex flex-col gap-10 text-center">
+                            <li><NavLink href="#servicios" className="text-2xl">Servicios</NavLink></li>
+                            <li><NavLink href="/portafolio" className="text-2xl">Portafolio</NavLink></li>
+                            <li><NavLink href="/blog" className="text-2xl">Blog</NavLink></li>
+                            <li><NavLink href="#planes" className="text-2xl">Planes</NavLink></li>
+                            <li>
+                                <button
+                                    onClick={() => scrollToSection("#contacto")}
+                                    className="bg-purple-600 text-white px-10 py-4 rounded-full font-bold text-xl"
                                 >
                                     Asesoría Gratis
-                                </a>
-                            </div>
-                        </div>
+                                </button>
+                            </li>
+                        </ul>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </header>
     );
 };
