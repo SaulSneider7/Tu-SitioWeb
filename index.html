@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es-PE"> <head>
+<html lang="es-PE">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
@@ -13,11 +14,11 @@
 
   <meta name="author" content="Tu SitioWeb" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
+  
   <link rel="canonical" href="https://tu-sitioweb.com/" />
 
-  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.ico?v=04042026" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
 
   <meta name="theme-color" content="#6D28D9" />
 
@@ -36,7 +37,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="/logo_oscuro_tu-sitioweb.png" />
+  
+  <link rel="preload" as="image" href="/logo_oscuro_tu-sitioweb.png" fetchPriority="high" />
 
   <script type="application/ld+json">
     {
@@ -44,6 +46,7 @@
       "@graph": [
         {
           "@type": "WebDesignService",
+          "@id": "https://tu-sitioweb.com/#organization",
           "name": "Tu SitioWeb",
           "alternateName": "TuSitioWeb Perú",
           "url": "https://tu-sitioweb.com",
@@ -78,15 +81,11 @@
       ]
     }
   </script>
-
 </head>
 
 <body>
-  {/* SEO: Accesibilidad para lectores de pantalla */}
   <noscript>Necesitas activar JavaScript para visualizar este sitio web de diseño profesional.</noscript>
-  
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
-
 </html>

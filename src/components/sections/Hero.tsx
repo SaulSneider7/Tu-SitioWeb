@@ -158,7 +158,7 @@ export const Hero = () => {
                             alt="ByteCastor - Experto en Desarrollo Web y SEO en Perú"
                             title="ByteCastor Arquitecto Digital"
                             // @ts-ignore - Atributos de prioridad para SEO
-                            fetchpriority="high"
+                            fetchPriority="high"
                             loading="eager"
                             className="relative w-full h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.35)]"
                         />
