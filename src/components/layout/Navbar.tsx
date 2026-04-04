@@ -49,13 +49,18 @@ export const Navbar = () => {
 
   return (
     <nav className="fixed top-[96px] md:top-[48px] left-0 right-0 z-50 bg-deep-black/70 backdrop-blur-md border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/20">
-              <FontAwesomeIcon icon={faCode} className="text-white text-sm" />
+          <Link to="/" className="flex items-center group py-2">
+            {/* Contenedor Optimizado: w-[180px] para mobile y w-[280px] para desktop */}
+            <div className="relative w-[180px] sm:w-[220px] md:w-[280px] h-14 md:h-30 flex items-center justify-start transition-transform duration-300 group-hover:scale-105">
+              <img
+                src="/logo_oscuro_tu-sitioweb.png"
+                alt="Tu SitioWeb - Diseño Web y SEO"
+                className="w-full h-full object-contain object-left drop-shadow-[0_0_15px_rgba(147,51,234,0.3)]"
+                loading="eager"
+              />
             </div>
-            <span className="text-xl font-display font-bold text-white tracking-tight">Tu<span className="text-purple-500">SitioWeb</span></span>
           </Link>
 
           {/* Desktop Menu */}
@@ -65,7 +70,8 @@ export const Navbar = () => {
             <Link to="/blog" className={`hover:text-white transition-colors ${location.pathname.startsWith('/blog') ? 'text-white' : ''}`}>Blog</Link>
             <NavLink href="#proceso" className="hover:text-white transition-colors">Proceso</NavLink>
             <NavLink href="#planes" className="hover:text-white transition-colors">Planes</NavLink>
-            
+            <NavLink href="#servicios-adicionales" className="hover:text-white transition-colors">Servicios Adicionales</NavLink>
+
             <NavLink href="#contacto" className="bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-all font-bold tracking-normal uppercase text-[10px] shadow-lg shadow-purple-500/20">Asesoría Gratis</NavLink>
           </div>
 
@@ -98,10 +104,11 @@ export const Navbar = () => {
               <Link to="/blog" className={`text-white/60 hover:text-white transition-colors uppercase tracking-[0.2em] text-xs font-bold py-2 w-full ${location.pathname.startsWith('/blog') ? 'text-white' : ''}`} onClick={() => setIsOpen(false)}>Blog</Link>
               <NavLink href="#proceso" className="text-white/60 hover:text-white transition-colors uppercase tracking-[0.2em] text-xs font-bold py-2 w-full" onClick={() => setIsOpen(false)}>Proceso</NavLink>
               <NavLink href="#planes" className="text-white/60 hover:text-white transition-colors uppercase tracking-[0.2em] text-xs font-bold py-2 w-full" onClick={() => setIsOpen(false)}>Planes</NavLink>
-              
+              <NavLink href="#servicios-adicionales" className="text-white/60 hover:text-white transition-colors uppercase tracking-[0.2em] text-xs font-bold py-2 w-full" onClick={() => setIsOpen(false)}>Servicios Adicionales</NavLink>
+
               <div className="pt-4 w-full">
-                <NavLink 
-                  href="#contacto" 
+                <NavLink
+                  href="#contacto"
                   className="block bg-purple-600 text-white px-6 py-4 rounded-xl hover:bg-purple-700 transition-all font-bold text-center"
                   onClick={() => setIsOpen(false)}
                 >
