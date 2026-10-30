@@ -1,128 +1,36 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
-import { Reveal } from "../components/ui/Reveal";
-
-export const BlogPage = () => {
-    const [posts, setPosts] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        fetch("/data/blog.json")
-            .then(res => res.json())
-            .then(data => {
-                setPosts(data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error("Error loading blog posts:", err);
-                setLoading(false);
-            });
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="pt-32 min-h-screen bg-deep-black flex items-center justify-center" aria-live="polite">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
-            </div>
-        );
-    }
-
-    return (
-        <main className="pt-32 min-h-screen bg-deep-black">
-            <Helmet>
-                {/* Título con Keywords de Localidad e Intención */}
-                <title>Blog de Tecnología y Diseño Web en Perú | Tu SitioWeb</title>
-                <meta name="description" content="Aprende sobre SEO, diseño web profesional y estrategias digitales. Artículos escritos para ayudar a emprendedores peruanos a crecer online." />
-                <meta name="keywords" content="blog diseño web peru, consejos seo lima, marketing digital peru, tendencias tecnologia 2026" />
-                <link rel="canonical" href="https://tu-sitioweb.com/blog" />
-
-                {/* Open Graph para el listado */}
-                <meta property="og:title" content="Blog de Tecnología y Estrategia Digital | Tu SitioWeb" />
-                <meta property="og:description" content="Contenido gratuito sobre cómo potenciar tu negocio en el mundo digital." />
-                <meta property="og:url" content="https://tu-sitioweb.com/blog" />
-            </Helmet>
-
-            <section className="max-w-7xl mx-auto px-4 pt-20 pb-32">
-                <header className="text-center mb-24">
-                    <Reveal>
-                        <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-8">
-                            Nuestro <span className="text-purple-500">Blog Digital</span>
-                        </h1>
-                    </Reveal>
-                    <Reveal>
-                        <p className="text-white/40 max-w-3xl mx-auto text-xl font-light leading-relaxed">
-                            Explora artículos sobre <strong>desarrollo web, posicionamiento SEO y diseño</strong> pensados para el mercado peruano.
-                        </p>
-                    </Reveal>
-                </header>
-
-                {/* SEO Semántico: Usamos un contenedor de sección para el grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12" role="list">
-                    {posts.map((post, i) => (
-                        <motion.article
-                            key={post.id}
-                            role="listitem"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className="group flex flex-col h-full bg-white/5 rounded-3xl overflow-hidden border border-white/10 hover:border-purple-500/40 transition-all hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]"
-                        >
-                            {/* Imagen con Alt Text Dinámico y Lazy Loading */}
-                            <Link
-                                to={`/blog/${post.id}`}
-                                className="aspect-video overflow-hidden relative"
-                                aria-label={`Leer más sobre ${post.title}`}
-                            >
-                                <img
-                                    src={post.image}
-                                    alt={`Portada del artículo: ${post.title}`}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    loading="lazy" // Mejora la carga inicial (LCP)
-                                />
-                                <div className="absolute top-4 left-4">
-                                    <span className="px-3 py-1 bg-purple-600/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
-                                        {post.category}
-                                    </span>
-                                </div>
-                            </Link>
-
-                            <div className="p-8 flex flex-col flex-grow">
-                                <div className="flex items-center gap-4 text-white/30 text-[10px] font-bold uppercase tracking-widest mb-4">
-                                    <time dateTime={post.dateIso || post.date}>{post.date}</time>
-                                    <span className="w-1 h-1 bg-white/20 rounded-full"></span>
-                                    <span>Por {post.author}</span>
-                                </div>
-
-                                <Link to={`/blog/${post.id}`}>
-                                    <h2 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-purple-400 transition-colors leading-tight">
-                                        {post.title}
-                                    </h2>
-                                </Link>
-
-                                <p className="text-white/50 font-light mb-8 line-clamp-3 leading-relaxed">
-                                    {post.excerpt}
-                                </p>
-
-                                <div className="mt-auto pt-6 border-t border-white/5">
-                                    <Link
-                                        to={`/blog/${post.id}`}
-                                        className="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest group-hover:text-purple-400 transition-colors"
-                                    >
-                                        Continuar leyendo
-                                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-                        </motion.article>
-                    ))}
-                </div>
-            </section>
-        </main>
-    );
-};
+﻿import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Arrow, BlogGrid } from '../components/site/Shared';
+import { posts, siteUrl, whatsapp } from '../components/site/data';
+import { SEO } from '../components/site/SEO';
+const categories = ['Todos', ...new Set(posts.map(post => post.category))];
+const learningPaths = [
+  { number: '01', title: 'Quiero una web para mi empresa', text: 'Define contenido, presupuesto y una experiencia que facilite las consultas.', links: [['pagina-web-corporativa-empresas-peru', 'Qué debe incluir tu web corporativa'], ['precio-diseno-web-peru-2026', 'Cómo planificar el presupuesto']] },
+  { number: '02', title: 'Necesito ordenar mi operación', text: 'Identifica qué automatizar y prepara el alcance de tu sistema de gestión.', links: [['software-a-medida-o-estandar-empresas', 'Software a medida o estándar'], ['requisitos-sistema-a-medida-empresa', 'Plantilla de requisitos del sistema']] },
+  { number: '03', title: 'Busco mejorar mi presencia digital', text: 'Revisa contenido, rendimiento y los pasos que llevan al contacto.', links: [['importancia-seo-negocios-digitales', 'Fundamentos de SEO para negocios'], ['optimizacion-conversion-landing-pages', 'Cómo recibir mejores consultas']] },
+];
+const questions = [
+  { title: '¿Mi empresa necesita una página web o un sistema a medida?', answer: <>Una web presenta tus servicios y facilita el contacto con posibles clientes. Un sistema gestiona procesos como cotizaciones, aprobaciones o reportes. Pueden complementarse. Compara las alternativas en la <Link to="/blog/software-a-medida-o-estandar-empresas">guía de software empresarial</Link>.</> },
+  { title: '¿Qué debo preparar para cotizar mi proyecto?', answer: <>Describe tu negocio, el objetivo y las funciones imprescindibles. Para una web, reúne servicios, textos e imágenes; para un sistema, documenta usuarios, procesos y reglas. Puedes usar nuestra <Link to="/blog/requisitos-sistema-a-medida-empresa">plantilla de requisitos</Link>.</> },
+  { title: '¿Una página nueva aparecerá primero en Google?', answer: <>No hay una posición garantizada. Una base técnica correcta y contenido útil forman parte del trabajo; también influyen la competencia y la relevancia para cada búsqueda. Empieza por entender <Link to="/blog/importancia-seo-negocios-digitales">cómo trabajar el SEO de tu negocio</Link>.</> },
+];
+export function BlogPage() {
+  const [category, setCategory] = useState('Todos');
+  const [query, setQuery] = useState('');
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const filtered = posts.filter(post => (category === 'Todos' || post.category === category) && normalize([post.title, post.excerpt, post.category, ...post.keywords].join(' ')).includes(normalize(query.trim())));
+  const featured = posts[0];
+  return <>
+    <SEO title="Blog de diseño web, SEO y sistemas a medida | Tu SitioWeb" description="Guías de diseño web, SEO y software a medida para negocios en Perú. Casos, consejos y criterios para planificar tu próximo proyecto digital." path="/blog" schema={{ '@context': 'https://schema.org', '@type': 'Blog', name: 'Blog de Tu SitioWeb', url: siteUrl + '/blog', inLanguage: 'es-PE', blogPost: posts.map(post => ({ '@type': 'BlogPosting', headline: post.title, url: siteUrl + '/blog/' + post.id, datePublished: post.dateIso, dateModified: post.dateModified })) }} />
+    <section className="page-intro container blog-intro"><p className="eyebrow">EL BLOG DE TU SITIOWEB · PARA EMPRESAS EN PERÚ</p><h1>Mejores decisiones.<br /><span>Mejores proyectos digitales.</span></h1><p>Guías de páginas web, SEO y sistemas a medida para empresas. Aprende a captar consultas, organizar procesos y definir qué necesita tu negocio antes de invertir en desarrollo.</p><div className="blog-intro-links"><a className="button" href="#rutas-lectura">Encuentra tu guía <Arrow /></a><Link className="text-link" to="/portafolio">Explora nuestros proyectos <Arrow diagonal /></Link></div></section>
+    <section className="container blog-featured" aria-labelledby="featured-title"><Link to={'/blog/' + featured.id} className="featured-image" tabIndex={-1} aria-hidden="true"><img src={featured.image} alt="" width="900" height="560" fetchPriority="high" /></Link><div><p className="eyebrow">EMPIEZA AQUÍ · GUÍA DESTACADA</p><h2 id="featured-title"><Link to={'/blog/' + featured.id}>{featured.title}</Link></h2><p>{featured.excerpt}</p><Link to={'/blog/' + featured.id} className="text-link">Leer la guía completa <Arrow diagonal /></Link></div></section>
+    <section className="container blog-paths" id="rutas-lectura" aria-labelledby="paths-title"><div className="section-heading"><p className="eyebrow">UNA RUTA PARA CADA OBJETIVO</p><h2 id="paths-title">¿Qué quieres mejorar?</h2></div><div className="blog-path-grid">{learningPaths.map(path => <article className="blog-path" key={path.number}><span className="blog-path-number">{path.number}</span><h3>{path.title}</h3><p>{path.text}</p><ul>{path.links.map(([id, title]) => <li key={id}><Link to={'/blog/' + id}>{title}<Arrow diagonal /></Link></li>)}</ul></article>)}</div></section>
+    <section className="container blog-list" aria-labelledby="articles-title"><div className="blog-toolbar"><div><p className="eyebrow">EXPLORA EL CONOCIMIENTO</p><h2 id="articles-title">Encuentra tu próximo paso.</h2></div><label className="blog-search"><span>Buscar artículos</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Diseño, SEO, sistemas…" /></label></div>
+      <div className="blog-filters" role="group" aria-label="Filtrar por tema">{categories.map(item => <button key={item} type="button" aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}</div>
+      <p className="blog-result-count" role="status">{filtered.length} {filtered.length === 1 ? 'artículo disponible' : 'artículos disponibles'}</p>
+      {filtered.length ? <BlogGrid items={filtered} /> : <div className="blog-empty"><h3>No encontramos artículos con esa búsqueda.</h3><p>Prueba otro término o explora todos los temas.</p><button className="button" onClick={() => { setQuery(''); setCategory('Todos'); }}>Ver todos los artículos</button></div>}
+    </section>
+    <section className="container blog-business-faq" aria-labelledby="blog-faq-title"><div><p className="eyebrow">ANTES DE DAR EL SIGUIENTE PASO</p><h2 id="blog-faq-title">Dudas de negocio.<br /><span>Respuestas claras.</span></h2><p>Elaboramos páginas web y sistemas a medida. Estas guías te ayudan a llegar al proyecto con objetivos y prioridades definidos.</p></div><div className="faq-list">{questions.map(question => <details key={question.title}><summary>{question.title}<span aria-hidden="true">+</span></summary><p>{question.answer}</p></details>)}</div></section>
+    <aside className="container blog-project-cta"><div><p className="eyebrow">DEL APRENDIZAJE A LA ACCIÓN</p><h2>Tu próximo proyecto empieza<br />con una buena conversación.</h2><p>Cuéntanos qué quieres mejorar. Definimos contigo el alcance de tu web o sistema empresarial.</p><div className="blog-service-links"><Link to="/#planes">Ver planes de páginas web <Arrow /></Link><Link to="/#sistemas">Conocer sistemas a medida <Arrow /></Link></div></div><a className="button" href={whatsapp('Hola, estuve leyendo el blog y quiero definir una página web o un sistema a medida para mi empresa.')} target="_blank" rel="noopener noreferrer">Conversar sobre mi proyecto <Arrow diagonal /></a></aside>
+  </>;
+}

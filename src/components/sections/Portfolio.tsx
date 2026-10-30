@@ -1,10 +1,11 @@
+﻿import type projectData from "../../../public/data/projects.json";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 
 export const Portfolio = () => {
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<typeof projectData>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -102,3 +103,4 @@ export const Portfolio = () => {
     </section>
   );
 };
+

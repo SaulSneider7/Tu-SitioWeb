@@ -1,3 +1,4 @@
+﻿import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faServer, faGlobe, faCogs, faEdit, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import pricingConfig from "../../pricing-config.json";
@@ -5,7 +6,7 @@ import pricingConfig from "../../pricing-config.json";
 export const AdditionalServices = () => {
     const { additionalServices } = pricingConfig;
 
-    const iconMap: { [key: string]: any } = {
+    const iconMap: { [key: string]: IconDefinition } = {
         hosting: faServer,
         domain: faGlobe,
         support: faCogs,
@@ -78,11 +79,11 @@ export const AdditionalServices = () => {
                                 <div className="mt-auto w-full">
                                     <div className="py-4 border-t border-white/5 flex flex-col items-center">
                                         <span className="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold">Inversión</span>
-                                        <div className="text-3xl font-display font-black text-white" aria-label={`Precio: S/${(s as any).originalPrice}`}>
+                                        <div className="text-3xl font-display font-black text-white" aria-label={`Precio: S/${s.originalPrice}`}>
                                             <span className="text-purple-500 text-sm mr-1">S/</span>
-                                            {(s as any).originalPrice} 
+                                            {s.originalPrice} 
                                             <span className="text-xs text-gray-500 font-mono ml-1 uppercase">
-                                                / {(s as any).billingCycle}
+                                                / {s.billingCycle}
                                             </span>
                                         </div>
                                     </div>

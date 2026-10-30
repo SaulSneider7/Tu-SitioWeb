@@ -1,0 +1,8 @@
+﻿import { Arrow } from '../site/Shared';
+import { whatsapp } from '../site/data';
+export function BetterProposal() {
+  return <section id="mejorar-propuesta" className="section container proposal-section" aria-labelledby="proposal-title">
+    <div className="proposal-intro"><p className="eyebrow">TU MEJOR OPCIÓN EMPIEZA CON UNA BUENA PROPUESTA</p><h2 id="proposal-title">Tienes una idea.<br /><span>Hagamos que valga más.</span></h2><p>Diseño, desarrollo y acompañamiento para construir lo que tu negocio necesita. Queremos ser tu mejor opción, con una propuesta clara desde el inicio.</p><div className="proposal-reasons"><span>✓ Alcance y entregables definidos</span><span>✓ Web y sistemas a medida</span><span>✓ Comunicación directa en cada etapa</span></div></div>
+    <div className="proposal-card"><span className="eyebrow">COMPAREMOS CON CLARIDAD</span><h3>¿Ya tienes una propuesta<br />de otra agencia?</h3><p>Compártela con nosotros. Revisamos su alcance y te proponemos cómo mejorarla en precio, funcionalidades o acompañamiento.</p><ol><li><span>01</span>Cuéntanos qué necesita tu negocio.</li><li><span>02</span>Comparamos los mismos entregables y condiciones.</li><li><span>03</span>Te presentamos nuestra alternativa por escrito.</li></ol><a className="button" href={whatsapp('Hola, tengo una propuesta de otra agencia y quisiera que revisen cómo mejorarla para mi proyecto.')} target="_blank" rel="noopener noreferrer">Quiero mejorar mi propuesta <Arrow diagonal /></a><small>La mejora está sujeta a evaluación del alcance y viabilidad del proyecto. Comparte una versión sin datos personales o confidenciales.</small></div>
+  </section>;
+}

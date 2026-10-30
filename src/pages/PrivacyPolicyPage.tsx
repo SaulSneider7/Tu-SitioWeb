@@ -1,85 +1,13 @@
-import { Helmet } from "react-helmet-async";
-import { Reveal } from "../components/ui/Reveal";
-
-export const PrivacyPolicyPage = () => {
-  return (
-    <div className="pt-32 min-h-screen bg-deep-black">
-      <Helmet>
-        <title>Privacidad de Datos | TuSitioWeb</title>
-        <meta name="description" content="Política de privacidad y protección de datos personales de TuSitioWeb." />
-      </Helmet>
-      
-      <div className="max-w-4xl mx-auto px-4 py-20">
-        <Reveal>
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-12 leading-tight">
-            Privacidad de <span className="text-purple-500">Datos</span>
-          </h1>
-        </Reveal>
-
-        <div className="prose prose-invert prose-purple max-w-none text-white/60 font-light leading-relaxed space-y-8">
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">1. Recopilación de Información</h2>
-            <p>
-              Recopilamos información personal cuando usted se pone en contacto con nosotros a través de formularios en nuestro sitio web, WhatsApp o correo electrónico. Esta información puede incluir su nombre, dirección de correo electrónico, número de teléfono y detalles sobre su proyecto.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">2. Uso de la Información</h2>
-            <p>
-              La información recopilada se utiliza exclusivamente para:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Proporcionar cotizaciones y responder a consultas.</li>
-              <li>Gestionar y entregar los servicios contratados.</li>
-              <li>Enviar actualizaciones sobre el estado de su proyecto.</li>
-              <li>Enviar información relevante sobre renovaciones de hosting y dominio.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">3. Protección de Datos</h2>
-            <p>
-              Implementamos medidas de seguridad para proteger su información personal contra el acceso no autorizado, alteración o divulgación. No vendemos, intercambiamos ni transferimos su información personal a terceros sin su consentimiento explícito.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">4. Cookies</h2>
-            <p>
-              Nuestro sitio web puede utilizar cookies para mejorar la experiencia del usuario y analizar el tráfico del sitio. Usted puede configurar su navegador para rechazar las cookies, aunque esto puede afectar algunas funcionalidades del sitio.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">5. Derechos del Usuario</h2>
-            <p>
-              De acuerdo con la Ley de Protección de Datos Personales (Ley N° 29733) en Perú, usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales. Puede ejercer estos derechos enviándonos una solicitud por correo electrónico.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">6. Enlaces a Terceros</h2>
-            <p>
-              Ocasionalmente, a nuestra discreción, podemos incluir o ofrecer productos o servicios de terceros en nuestro sitio web. Estos sitios de terceros tienen políticas de privacidad independientes. Por lo tanto, no tenemos responsabilidad por el contenido y las actividades de estos sitios vinculados.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">7. Cambios en la Política de Privacidad</h2>
-            <p>
-              TuSitioWeb se reserva el derecho de modificar esta política de privacidad en cualquier momento. Cualquier cambio será publicado en esta página.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">8. Contacto</h2>
-            <p>
-              Si tiene alguna pregunta sobre esta política de privacidad, puede contactarnos a través de nuestro WhatsApp o correo electrónico oficial.
-            </p>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
-};
+﻿import { Link } from 'react-router-dom';
+import { LegalPage } from '../components/site/LegalPage';
+export function PrivacyPolicyPage() {
+  return <LegalPage title="Política de privacidad" description="Información sobre los datos de contacto y proyectos, sus finalidades y cómo solicitar el ejercicio de tus derechos ante Tu SitioWeb." path="/privacidad">
+    <section><h2>1. Alcance y contacto</h2><p>Esta política describe el tratamiento de información relacionado con el sitio de Tu SitioWeb y las consultas sobre diseño web, desarrollo de sistemas y servicios asociados. El canal de contacto es contacto@tu-sitioweb.com. Los datos de identificación del prestador del servicio deben constar en la cotización o contrato de cada proyecto.</p></section>
+    <section><h2>2. Información que compartes</h2><p>Al escribirnos por correo electrónico o WhatsApp puedes proporcionar tu nombre, datos de contacto, información de tu empresa y requisitos del proyecto. Comparte únicamente lo necesario para atender tu consulta. Evita enviar contraseñas, datos de tarjetas o información personal de terceros en una solicitud inicial.</p><p>El sitio actual facilita enlaces de contacto; no dispone de registro de usuarios ni de un formulario propio para almacenar consultas.</p></section>
+    <section><h2>3. Para qué se utiliza la información</h2><ul><li>Responder consultas y preparar propuestas.</li><li>Coordinar el alcance, desarrollo, entrega y soporte de los servicios solicitados.</li><li>Gestionar pagos, comprobantes y renovaciones cuando corresponda.</li><li>Atender solicitudes relacionadas con tus datos y obligaciones aplicables.</li></ul><p>El tratamiento debe apoyarse en la base que corresponda a cada finalidad, como tu consentimiento, la gestión de la relación contractual o una obligación legal. Una consulta no supone autorización para finalidades publicitarias ajenas a ella.</p></section>
+    <section><h2>4. Servicios externos y datos técnicos</h2><p>Al visitar el sitio, el navegador solicita archivos al alojamiento y fuentes tipográficas a Google Fonts. Estas solicitudes pueden comunicar datos técnicos como la dirección IP y datos del navegador. Al abrir WhatsApp, redes sociales u otros enlaces, interactúas con servicios externos sujetos a sus propias políticas.</p><p>La ubicación y el tratamiento de información por estos proveedores pueden depender de su infraestructura, incluso fuera de Perú. Consulta también nuestra <Link to="/cookies">política de cookies</Link>.</p></section>
+    <section><h2>5. Conservación y protección</h2><p>La conservación debe limitarse al tiempo necesario para atender la finalidad de la consulta o servicio y las obligaciones aplicables. Puedes solicitar información sobre la conservación o eliminación de tus datos. Cuando exista una obligación de mantener documentación, se te informará de la limitación correspondiente.</p><p>En los proyectos que impliquen acceso a datos de tus clientes o trabajadores, las responsabilidades, accesos y medidas de protección deben definirse específicamente en el acuerdo de servicio.</p></section>
+    <section><h2>6. Tus derechos</h2><p>Puedes solicitar acceso, rectificación, cancelación u oposición respecto de tus datos personales, según corresponda. Escribe a <a href="mailto:contacto@tu-sitioweb.com?subject=Solicitud%20sobre%20datos%20personales">contacto@tu-sitioweb.com</a> describiendo tu solicitud y un medio de respuesta. Se podrá requerir la información necesaria para verificar tu identidad de forma proporcionada.</p><p>Puedes consultar la <a href="https://www.gob.pe/9270" target="_blank" rel="noopener noreferrer">orientación oficial sobre derechos ARCO</a> y recurrir a la Autoridad Nacional de Protección de Datos Personales en los casos que correspondan. Esta política se interpreta conforme a la normativa peruana de protección de datos personales.</p></section>
+    <section><h2>7. Cambios en esta política</h2><p>Las actualizaciones se mostrarán con su fecha en esta página. Si se incorporan nuevas finalidades que requieran consentimiento, deberán informarse y solicitarse antes de aplicar ese tratamiento.</p></section>
+  </LegalPage>;
+}
