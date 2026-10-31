@@ -2,7 +2,7 @@
     {
         "title": "Sonrisa Real",
         "category": "Clínica Dental",
-        "image": "/sonrisa_real.webp",
+        "image": "/img/portadas-portafolio/sonrisa_real.webp",
         "link": "https://sonrisa-real.netlify.app/",
         "description": "Diseño web para clínica odontológica, optimizado para generar confianza y atraer pacientes.",
         "keywords": [
@@ -14,7 +14,7 @@
     {
         "title": "Agroindustrial Tivan SAC",
         "category": "Diseño Web Agrícola",
-        "image": "/agroindustrial_tivan.webp",
+        "image": "/img/portadas-portafolio/agroindustrial_tivan.webp",
         "link": "https://agroindustrialtivan.com/",
         "description": "Diseño y desarrollo de plataforma web para empresa agroindustrial en Perú, enfocada en soluciones sostenibles y optimización del rendimiento agrícola.",
         "keywords": [
@@ -26,7 +26,7 @@
     {
         "title": "Alexander Flow",
         "category": "Portafolio Creativo",
-        "image": "/alexander-flow.webp",
+        "image": "/img/portadas-portafolio/alexander-flow.webp",
         "link": "https://alexanderflow.netlify.app/",
         "description": "Desarrollo de portafolio web profesional para DJ y diseñador gráfico, optimizado para mostrar servicios creativos y captar clientes.",
         "keywords": [
@@ -38,7 +38,7 @@
     {
         "title": "Flow 21",
         "category": "Industria Musical",
-        "image": "/flow-21.webp",
+        "image": "/img/portadas-portafolio/flow-21.webp",
         "link": "https://flow-21.netlify.app/",
         "description": "Plataforma web para productora musical urbana en Perú, diseñada para transmitir identidad de marca y conectar con nuevos artistas.",
         "keywords": [
@@ -50,7 +50,7 @@
     {
         "title": "Monzon Express",
         "category": "Transporte y Logística",
-        "image": "/monzon-express.webp",
+        "image": "/img/portadas-portafolio/monzon-express.webp",
         "link": "https://monzon-express.com/",
         "description": "Diseño web corporativo para empresa de transporte, encomiendas y turismo, optimizado para generar confianza y captar clientes.",
         "keywords": [
@@ -62,7 +62,7 @@
     {
         "title": "Mr. Brevetes",
         "category": "Servicios Legales",
-        "image": "/mr_brevetes.webp",
+        "image": "/img/portadas-portafolio/mr_brevetes.webp",
         "link": "https://mr-brevetes.netlify.app/",
         "description": "Página web para asesoría en licencias de conducir en Perú, enfocada en conversión y captación de clientes.",
         "keywords": [
@@ -74,7 +74,7 @@
     {
         "title": "Puertas Seguras JLC",
         "category": "Ingeniería Industrial",
-        "image": "/puertas_seguras_jlc.webp",
+        "image": "/img/portadas-portafolio/puertas_seguras_jlc.webp",
         "link": "https://puertassegurasjlc.com/",
         "description": "Sitio web para empresa especializada en puertas automáticas residenciales e industriales.",
         "keywords": [
@@ -86,7 +86,7 @@
     {
         "title": "Tip Excellent",
         "category": "Consultoría Empresarial",
-        "image": "/tip-excellent.webp",
+        "image": "/img/portadas-portafolio/tip-excellent.webp",
         "link": "https://tip-excellent.com/",
         "description": "Página web corporativa para empresa de consultoría con enfoque en productividad y performance.",
         "keywords": [
@@ -98,7 +98,7 @@
     {
         "title": "Titan Barber Shop",
         "category": "Negocio Local",
-        "image": "/Titan_Barber.webp",
+        "image": "/img/portadas-portafolio/Titan_Barber.webp",
         "link": "https://titan-barber.netlify.app/",
         "description": "Página web moderna para barbería, enfocada en atraer clientes locales y reservas.",
         "keywords": [
@@ -110,7 +110,7 @@
     {
         "title": "Corporacion VGR",
         "category": "Producción Audiovisual",
-        "image": "/corporacionvgr.webp",
+        "image": "/img/portadas-portafolio/corporacionvgr.webp",
         "link": "https://corporacionvgr.com/",
         "description": "Sitio web profesional para empresa de servicios audiovisuales y grabaciones aéreas en 4K/6K.",
         "keywords": [

@@ -1,6 +1,6 @@
 ﻿import { siteUrl } from './data';
 type Props = { title: string; description: string; path: string; image?: string; article?: boolean; noindex?: boolean; schema?: object };
-export function SEO({ title, description, path, image = '/preview.jpeg', article = false, noindex = false, schema }: Props) {
+export function SEO({ title, description, path, image = '/img/portadas-blog/preview.jpeg', article = false, noindex = false, schema }: Props) {
   const url = siteUrl + path;
   const imageUrl = new URL(image, siteUrl).href;
   return <>

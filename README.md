@@ -16,6 +16,13 @@ El build genera HTML con contenido completo para inicio, portafolio, blog, cada 
 
 ## Contenido
 
+- public/img/: imágenes generales del sitio.
+- public/img/logos/: logos de la marca, clientes y favicons.
+- public/img/portadas-portafolio/: portadas de proyectos.
+- public/img/portadas-blog/: portadas de artículos y vista previa social.
+
+Las imágenes se referencian con rutas desde `/img/`, sin incluir `public`.
+
 - src/pricing-config.json: precios, prestaciones y servicios adicionales. Se conservan los valores originales. Una oferta solo se muestra si enabled está activo y endDate sigue vigente; se actualiza cada minuto en el navegador. Se recomienda incluir el huso horario en fechas nuevas, por ejemplo -05:00 para Perú.
 - public/data/projects.json: proyectos y sus enlaces.
 - public/data/blog.json: artículos y fechas ISO. Al editar cualquiera de los JSON, volver a compilar para actualizar el HTML y el sitemap.

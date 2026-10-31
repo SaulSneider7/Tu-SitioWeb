@@ -154,7 +154,7 @@ export const Hero = () => {
 
                         {/* IMAGEN DEL CASTOR CON MEJORAS DE SEO/PERFORMANCE */}
                         <img
-                            src="/castor_hero.png"
+                            src="/img/castor_hero.png"
                             alt="ByteCastor - Experto en Desarrollo Web y SEO en Perú"
                             title="ByteCastor Arquitecto Digital"
                             fetchPriority="high"

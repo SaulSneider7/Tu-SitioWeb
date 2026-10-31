@@ -115,7 +115,7 @@ export const MiniPet = () => {
                     >
                         {/* SEO: alt="" vacío indica que la imagen es decorativa */}
                         <img
-                            src={isHit ? "/pet_sad.png" : "/pet_happy.png"}
+                            src={isHit ? "/img/pet_sad.png" : "/img/pet_happy.png"}
                             alt=""
                             loading="lazy"
                             className="w-full h-full object-cover pointer-events-none"

@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import tivan from '../../assets/img/logo-agroindustrialtivan.png';
-import jasper from '../../assets/img/logo_jasperpetshop.jpeg';
-import pinguino from '../../assets/img/logo_licoreria_DonPinguino.png';
-import metalmaq from '../../assets/img/logo_metalmaq.png';
-import monzon from '../../assets/img/logo_monzon_express.png';
-import tip from '../../assets/img/logo_tip_excellent.png';
+const tivan = '/img/logos/logo-agroindustrialtivan.png';
+const jasper = '/img/logos/logo_jasperpetshop.jpeg';
+const pinguino = '/img/logos/logo_licoreria_DonPinguino.png';
+const metalmaq = '/img/logos/logo_metalmaq.png';
+const monzon = '/img/logos/logo_monzon_express.png';
+const tip = '/img/logos/logo_tip_excellent.png';
 
 const clients = [
   { name: 'Agroindustrial Tivan', sector: 'Agroindustria', src: tivan, variant: 'wide' },
